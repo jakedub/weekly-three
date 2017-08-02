@@ -1,0 +1,54 @@
+/*Background color: #64B255;
+Border color between buttons: #83C178;
+Color for numbers, equal enterfield: white;
+Operators (not =) color: #4B6E44;
+Hover color for equal and clear: #83C178*/
+.wrapper{
+  max-width: 375px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+section {
+  background-color: #64B255;
+  display: flex;
+  display: flex;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+
+.number{
+  border: 1px solid gray;
+  box-sizing: border-box;
+  width:80px;
+  flex-grow: 1;
+  height: 80px;
+}
+
+
+
+#entry{
+  flex-grow: 3;
+  width: 245px;
+}
+
+#entry:hover{
+  background-color: #83C178;
+}
+
+.operate{
+  background-color: #83C178;
+  color: #4B6E44;
+  box-sizing: border-box;
+  width: 80px;
+  border: 1px solid gray;
+  flex-grow: 1;
+  height: 80px;
+
+}
+
+.clear:hover{
+  background-color: #83C178;
+}
