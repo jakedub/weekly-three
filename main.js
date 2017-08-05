@@ -27,6 +27,13 @@ function mulCallBack() {
     }
 }
 
+document.getElementById("entry").onchange = function(){
+  if( multiply.style.color === "red" ){
+      multiply.style.color = "blue";
+  }else{
+      multiply.style.color = "red";
+  }
+}
 //Variables
 let numbers = [1,2,3,4,5,6,7,8,9,0]; //don't know if needed but reference point
 let memory = 0; //holds the previous number
