@@ -32,6 +32,8 @@ section {
 #entry{
   flex-grow: 3;
   width: 245px;
+  font-size: 50px;
+  text-align: right;
 }
 
 #entry:hover{
@@ -46,9 +48,10 @@ section {
   border: 1px solid gray;
   flex-grow: 1;
   height: 80px;
+  font-weight: 100;
 
 }
 
-.clear:hover{
+.number:hover{
   background-color: #83C178;
 }
