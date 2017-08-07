@@ -12,15 +12,20 @@ let operation = 0; //number of the operation
 let total = 0; //the total from calculation
 
 
-// //Functions
-
 let input = document.querySelector('input');
 document.querySelectorAll('.number').forEach(function (button, index) {
   button.addEventListener('click', function () {
-    input.value += index + 1;
+    input.value += index + 1; //showing numbers in different order
   });
 });
 
+
+let entry = document.querySelector('input');
+document.querySelectorAll('.operate').forEach(function (button, index) {
+  button.addEventListener('click', function () {
+    entry.value += index + 1; //goes one through five
+  });
+});
 
 // function memory(){
 //   if (number.onclick)

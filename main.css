@@ -40,6 +40,26 @@ section {
   background-color: #83C178;
 }
 
+#clear{
+  border: 1px solid gray;
+  box-sizing: border-box;
+  width:80px;
+  flex-grow: 1;
+  height: 80px;
+}
+
+.dot{
+  border: 1px solid gray;
+  box-sizing: border-box;
+  width:80px;
+  flex-grow: 1;
+  height: 80px;
+}
+
+.dot:hover{
+  background-color: #83C178;
+}
+
 .operate{
   background-color: #83C178;
   color: #4B6E44;
