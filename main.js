@@ -4,7 +4,6 @@
 
 let number = document.getElementsByClassName("number");
 let operate = document.getElementsByClassName("operate");
-// let entry = document.getElementById("entryText");
 let clear = document.getElementById("clear");
 let sub=document.getElementById("sub");
 let multiply = document.getElementById("mul");
@@ -18,17 +17,22 @@ let total = 0; //the total from calculation
 
 // //Functions
 
-let input = document.querySelector('input');
-document.querySelectorAll('.number').forEach(function (button, index) {
-  button.addEventListener('click', function () {
-    input.value += index + 1;
-  });
-});
+for (let i = 0; i < number.length; i++) {
+  number[i].addEventListener("click", function() {
+      let inputValue = entry.querySelector("input").value;
+      let buttonValue = this.textContent;
+      if (buttonValue === "C") {
+        entry.innerHTML = "";
+      } else {
+        entry.innerHTML += buttonValue;
+      }
+  })
+}
 
 // for(let i = 0; i < keys.length; i++) {
 // 	keys[i].onclick = function() {
-// 		let input = document.querySelector('entry');
-// 		let inputVal = entry.innerHTML;
+// 		let input = document.querySelector('input');
+// 		let inputVal = input.innerHTML;
 // 		let buttonVal = this.innerHTML;
 //     if(buttonVal === 'C') {
 // 			input.innerHTML = '';
@@ -39,19 +43,3 @@ document.querySelectorAll('.number').forEach(function (button, index) {
 //       decimalAdded = false;
 //     }
 //   };
-
-
-// let input = document.querySelector('input');
-// document.querySelectorAll('.number').forEach(function (button, item) {
-//   button.addEventListener('click', function () {
-//     input.value = item; //showing numbers in different order
-//   });
-// });
-//
-//
-// let entry = document.querySelector('input');
-// document.querySelectorAll('.operate').forEach(function (button, index) {
-//   button.addEventListener('click', function () {
-//     entry.value += index + 1; //goes one through five
-//   });
-// });
