@@ -29,6 +29,18 @@ for (let i = 0; i < number.length; i++) {
   })
 }
 
+for (let i = 0; i < operate.length; i++) {
+  operate[i].addEventListener("click", function() {
+      let inputValue = entry.querySelector("input").value;
+      let buttonValue = this.textContent;
+      if (buttonValue === "=") {
+        entry.innerHTML = "";
+      } else {
+        entry.innerHTML += buttonValue;
+      }
+  })
+}
+
 // for(let i = 0; i < keys.length; i++) {
 // 	keys[i].onclick = function() {
 // 		let input = document.querySelector('input');
