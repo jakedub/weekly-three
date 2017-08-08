@@ -1,84 +1,128 @@
-// Get all the keys from document
-let keys = document.querySelectorAll('span');
-let operators = ['+', '-', 'x', '÷'];
-let decimalAdded = false;
+displayNum = "";
+storedNum = "";
+operation = 0;
+queuedOperation = 0;
+calculationFinished = false;
 
-// Add onclick event to all the keys and perform operations
-for(let i = 0; i < keys.length; i++) {
-	keys[i].onclick = function(e) {
-		let input = document.querySelector('.screen');
-		let inputVal = input.innerHTML;
-		let buttonVal = this.innerHTML;
+function clearDisplay() {
+// Select the calculator's display
+var display = document.getElementById("display");
 
-		// Now, just append the key values (buttonValue) to the input string and finally use javascript's eval function to get the result
-		// If clear key is pressed, erase everything
-		if(buttonVal === 'C') {
-			input.innerHTML = '';
-			decimalAdded = false;
+// Clear the global variables and the display
+displayNum = "";
+storedNum = "";
+operation = 0;
+queuedOperation = 0;
+display.value = displayNum;
+
+}
+
+function numInput(num) {
+// Select the calculator's display
+var display = document.getElementById("display");
+
+// Check if the display is empty and the number being pressed is 0
+// This is to make sure the first number isn't 0 because then javascript thinks we are using OCTAL (Base eight)
+if ((display.value == "") && num == "0") {
+// If it is, do nothing
+	return;
+}
+// Check if a calculation has finished
+// If it has replace the number in the display (the answer to the calculation with the number
+// that was just pressed and change calculation finished back to false
+else if (calculationFinished == true) {
+		display.value = num;
+		calculationFinished = false;
+}
+// if neither of these is the case input the numbers as usual
+else {
+	display.value += num;
+}
+}
+
+function insertDecimal(dec) {
+// Select the calculator's display
+var display = document.getElementById("display");
+
+// Loop through the current number to make sure there isn't already a decimal
+for (i = 0; i < display.value.length; i++)
+		if (display.value.charAt(i) == '.') {
+				// If there is, do nothing
+				return;
 		}
+// If there isn't add a decimal to the end of the displayed number
+		display.value += dec;
+}
 
-		// If eval key is pressed, calculate and display the result
-		else if(buttonVal === '=') {
-			let equation = inputVal;
-			let lastChar = equation[equation.length - 1];
+function setOperation(command) {
+// Select the calculator's display
+var display = document.getElementById("display"),
+				displayNum = display.value;
+// eval both the numbers to remove quotes
+// otherwise 4 + 5 will be "4" + "5" which in JS will equal 45
+				evalDisplay = eval(displayNum),
+				evalStored = eval(storedNum);
 
-			// Replace all instances of x and ÷ with * and / respectively. This can be done easily using regex and the 'g' tag which will replace all instances of the matched character/substring
-			equation = equation.replace(/x/g, '*').replace(/÷/g, '/');
+// Check if there is a queued operation
+// If there is a queued operation calculate it
+// Then set the stored number to total of the calculation
+if (queuedOperation == 0) {
+		storedNum = display.value;
+}
+else if (queuedOperation == 1) {
+		storedNum = evalStored + evalDisplay;
+}
+else if (queuedOperation == 2) {
+		storedNum = evalStored - evalDisplay;
+}
+else if (queuedOperation == 3) {
+		storedNum = evalStored * evalDisplay;
+}
 
-			// Final thing left to do is checking the last character of the equation. If it's an operator or a decimal, remove it
-			if(operators.indexOf(lastChar) > -1 || lastChar === '.')
-				equation = equation.replace(/.$/, '');
+// Check what command was put into the calculator
+// Then set the operation to the correct number
+if (command == 'add') {
+		operation = 1;
+}
+else if (command == 'subtract') {
+		operation = 2;
+}
+if (command == 'multiply') {
+		operation = 3;
+}
 
-			if(equation)
-				input.innerHTML = eval(equation);
+// Queue up an operation for enterint multiple  commands without hitting equals
+// i.e. 10x4+8-9+3=
+queuedOperation = operation;
+// Clear the display in order to receive a new number
+display.value = '';
+}
 
-			decimalAdded = false;
-		}
+function calculate() {
+// Select the calculator's display
+var display = document.getElementById("display");
+				displayNum = display.value;
+var evalDisplay = eval(displayNum),
+				evalStored = eval(storedNum);
 
-		// Basic functionality of the calculator is complete. But there are some problems like
-		// 1. No two operators should be added consecutively.
-		// 2. The equation shouldn't start from an operator except minus
-		// 3. not more than 1 decimal should be there in a number
-
-		// We'll fix these issues using some simple checks
-
-		// indexOf works only in IE9+
-		else if(operators.indexOf(buttonVal) > -1) {
-			// Operator is clicked
-			// Get the last character from the equation
-			let lastChar = inputVal[inputVal.length - 1];
-
-			// Only add operator if input is not empty and there is no operator at the last
-			if(inputVal != '' && operators.indexOf(lastChar) === -1)
-				input.innerHTML += buttonVal;
-
-			// Allow minus if the string is empty
-			else if(inputVal === '' && buttonVal === '-')
-				input.innerHTML += buttonVal;
-
-			// Replace the last operator (if exists) with the newly pressed operator
-			if(operators.indexOf(lastChar) > -1 && inputVal.length > 1) {
-				// Here, '.' matches any character while $ denotes the end of string, so anything (will be an operator in this case) at the end of string will get replaced by new operator
-				input.innerHTML = inputVal.replace(/.$/, buttonVal);
-			}
-
-			decimalAdded =false;
-		}
-
-		// Now only the decimal problem is left. We can solve it easily using a flag 'decimalAdded' which we'll set once the decimal is added and prevent more decimals to be added once it's set. It will be reset when an operator, eval or clear key is pressed.
-		else if(buttonVal === '.') {
-			if(!decimalAdded) {
-				input.innerHTML += buttonVal;
-				decimalAdded = true;
-			}
-		}
-
-		// if any other key is pressed, just append it
-		else {
-			input.innerHTML += buttonVal;
-		}
-
-		// prevent page jumps
-		e.preventDefault();
-	}
+// Do the math
+if (operation == 1) {
+		displayNum = evalStored + evalDisplay;
+}
+else if (operation == 2) {
+		displayNum = evalStored - evalDisplay;
+}
+else if (operation == 3) {
+		displayNum = evalStored * evalDisplay;
+}
+// Change display to the answer
+display.value = displayNum;
+if (operation != 0)
+		calculationFinished = true;
+// Clear all the global variables
+// Necessary in case the user wants to make a calculation using the answer
+operation = 0;
+queuedOperation = 0;
+displayNum = "";
+storedNum = "";
 }

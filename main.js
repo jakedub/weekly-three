@@ -41,7 +41,7 @@ for (let i = 0; i < operate.length; i++) {
   })
 }
 
-//Need to check if this could work 
+//Need to check if this could work
 let displayNum = "";
 let storedNum = "";
 let operation = 0;
@@ -66,55 +66,55 @@ function insertDecimal(dec) {
         display.value += dec;
 }
 
-function operation(command) {
-    let display = document.querySelector("input"); //selecting the display
-            evalDisplay = eval(displayNum), //need to check
-            evalStored = eval(storedNum); //need to check
-    if (queuedOperation == 0) { //checking for queued operation
-        storedNum = display.value;
-    }
-    else if (queuedOperation == 1) {
-        storedNum = evalStored + evalDisplay;
-    }
-    else if (queuedOperation == 2) {
-        storedNum = evalStored - evalDisplay;
-    }
-    else if (queuedOperation == 3) {
-        storedNum = evalStored * evalDisplay;
-    }
-    if (command == 'add') {
-        operation = 1;
-    }
-    else if (command == 'subtract') {
-        operation = 2;
-    }
-    if (command == 'multiply') {
-        operation = 3;
-    }
-    queuedOperation = operation;
-    display.value = '';
-}
-
-function calculate() {
-    let display = document.querySelector("input");
-            displayNum = display.value;
-    var evalDisplay = eval(displayNum),
-            evalStored = eval(storedNum);
-    if (operation == 1) {
-        displayNum = evalStored + evalDisplay;
-    }
-    else if (operation == 2) {
-        displayNum = evalStored - evalDisplay;
-    }
-    else if (operation == 3) {
-        displayNum = evalStored * evalDisplay;
-    }
-    display.value = displayNum;
-    if (operation != 0)
-        calculationFinished = true;
-
-    operation = 0;
-    queuedOperation = 0;
-    displayNum = "";
-    storedNum = "";
-}
+// function operation(command) {
+//     let display = document.querySelector("input"); //selecting the display
+//             evalDisplay = eval(displayNum), //need to check
+//             evalStored = eval(storedNum); //need to check
+//     if (queuedOperation == 0) { //checking for queued operation
+//         storedNum = display.value;
+//     }
+//     else if (queuedOperation == 1) {
+//         storedNum = evalStored + evalDisplay;
+//     }
+//     else if (queuedOperation == 2) {
+//         storedNum = evalStored - evalDisplay;
+//     }
+//     else if (queuedOperation == 3) {
+//         storedNum = evalStored * evalDisplay;
+//     }
+//     if (command == 'add') {
+//         operation = 1;
+//     }
+//     else if (command == 'subtract') {
+//         operation = 2;
+//     }
+//     if (command == 'multiply') {
+//         operation = 3;
+//     }
+//     queuedOperation = operation;
+//     display.value = '';
+// }
+//
+// function calculate() {
+//     let display = document.querySelector("input");
+//             displayNum = display.value;
+//     var evalDisplay = eval(displayNum),
+//             evalStored = eval(storedNum);
+//     if (operation == 1) {
+//         displayNum = evalStored + evalDisplay;
+//     }
+//     else if (operation == 2) {
+//         displayNum = evalStored - evalDisplay;
+//     }
+//     else if (operation == 3) {
+//         displayNum = evalStored * evalDisplay;
+//     }
+//     display.value = displayNum;
+//     if (operation != 0)
+//         calculationFinished = true;
+//
+//     operation = 0;
+//     queuedOperation = 0;
+//     displayNum = "";
+//     storedNum = "";
+// }

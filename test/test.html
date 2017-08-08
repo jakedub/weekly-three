@@ -6,29 +6,34 @@
     <link rel="stylesheet" type="text/css" href="test.css" />
   </head>
   <body>
-    <div id="calculator">
-    	<div class="top">
-    		<span class="clear">C</span>
-    		<div class="screen"></div>
-    	</div>
-    	<div class="keys">
-    		<span>7</span>
-    		<span>8</span>
-    		<span>9</span>
-    		<span class="operator">+</span>
-    		<span>4</span>
-    		<span>5</span>
-    		<span>6</span>
-    		<span class="operator">-</span>
-    		<span>1</span>
-    		<span>2</span>
-    		<span>3</span>
-    		<span class="operator">÷</span>
-    		<span>0</span>
-    		<span>.</span>
-    		<span class="eval">=</span>
-    		<span class="operator">x</span>
-    	</div>
-    <script ref="test.js"></script>
+    <body>
+    <form class="calcForm" name="calculator">
+        <input type="text" class="calcDisplay" id="display" />
+        <div class="calcRow">
+            <input type="button" class="calcButton" value="7" onclick="numInput('7')" />
+            <input type="button" class="calcButton" value="8" onclick="numInput('8')" />
+            <input type="button" class="calcButton" value="9" onclick="numInput('9')" />
+            <input type="button" class="calcButton" value="+" onclick="setOperation('add')" />
+        </div>
+        <div class="calcRow">
+            <input type="button" class="calcButton" value="4" onclick="numInput('4')" />
+            <input type="button" class="calcButton" value="5" onclick="numInput('5')" />
+            <input type="button" class="calcButton" value="6" onclick="numInput('6')" />
+            <input type="button" class="calcButton" value="-" onclick="setOperation('subtract')" />
+        </div>
+        <div class="calcRow">
+            <input type="button" class="calcButton" value="1" onclick="numInput('1')" />
+            <input type="button" class="calcButton" value="2" onclick="numInput('2')" />
+            <input type="button" class="calcButton" value="3" onclick="numInput('3')" />
+            <input type="button" class="calcButton" value="x" onclick="setOperation('multiply')" />
+        </div>
+        <div class="calcRow">
+            <input type="button" class="calcButton" value="0" onclick="numInput('0')" />
+            <input type="button" class="calcButton" value="." onclick="insertDecimal('.')" />
+            <input type="button" class="calcButton" value="C" onclick="clearDisplay()" />
+            <input type="button" class="calcButton" value="=" onclick="calculate()" />
+        </div>
+    </form>
+    <script src="test.js"></script>
   </body>
 </html>
