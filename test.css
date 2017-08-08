@@ -1,0 +1,38 @@
+/*Background color: #64B255;
+Border color between buttons: #83C178;
+Color for numbers, equal enterfield: white;
+Operators (not =) color: #4B6E44;
+Hover color for equal and clear: #83C178*/
+
+form {
+  background-color: #64B255;
+  max-width: 800px;
+}
+
+.calculator{
+  font-size: 20px;
+  display: flex;
+  max-width: 1200px;
+  justify-content: center;
+  align-content: center;
+  height: 500px;
+  flex-direction: row;
+}
+
+
+.entry{
+  flex-grow: 3;
+  height: 20%;
+  width: 90%;
+}
+
+input {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
