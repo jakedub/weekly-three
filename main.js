@@ -36,23 +36,23 @@ for (let i = 0; i < operate.length; i++) {
   })
 }
 
-function insertDecimal(dec) {
-    let display = entryText;
-    for (i = 0; i < display.value.length; i++) //check to see if decimal
-        if (display.value.charAt(i) == '.') {
-            return; //if yes then do nothing
-        }
-        display.value += dec;
-}
+// function insertDecimal(dec) {
+//     let display = entryText;
+//     for (i = 0; i < display.value.length; i++) //check to see if decimal
+//         if (display.value.charAt(i) == '.') {
+//             return; //if yes then do nothing
+//         }
+//         display.value += dec;
+// }
 
 function total(){
-  entryText.value=eval(entryText.value);
+  entryText.value=eval(entryText.value) || "";
 }
 
 function clearDisplay(){
   let display = document.querySelector("input");
   let buttonValue = this.textContent;
-    entry.innerHTML = " ";
+    entryText.value = " ";
 }
 
 // let displayNum = "";

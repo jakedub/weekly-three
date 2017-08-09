@@ -29,11 +29,14 @@ section {
 
 
 
-#entry{
+#entryText{
   flex-grow: 3;
-  width: 245px;
+  width: 275px;
   font-size: 30px;
   text-align: right;
+}
+#entry{
+  border-bottom: 4px gray solid;
 }
 
 #entry:hover{
