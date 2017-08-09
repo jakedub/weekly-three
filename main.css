@@ -51,6 +51,10 @@ section {
   height: 80px;
 }
 
+#clear:hover{
+  background-color: #83C178;
+}
+
 .dot{
   border: 1px solid gray;
   box-sizing: border-box;
